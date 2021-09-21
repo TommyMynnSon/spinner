@@ -26,10 +26,12 @@ const spinnerOne = () => {
 
   const desiredNumberOfCycles = 1;
   const rotationsPerCycle = 9;
-  const rotations = desiredNumberOfCycles * rotationsPerCycle;
+
+  const rotations = (desiredNumberOfCycles * rotationsPerCycle % 2 === 0) ? desiredNumberOfCycles * rotationsPerCycle - 1 : desiredNumberOfCycles * rotationsPerCycle;
+  const timeDifference = 400;
+  const endLineTiming = timeDifference * rotations + 25;
 
   let rotationCount = 0;
-  let timeDifference = 400;
   let timer = -timeDifference;
 
   for (let i = 0; i < icons.length; i++) {
@@ -55,7 +57,7 @@ const spinnerOne = () => {
 
   setTimeout(() => {
     process.stdout.write('\n');
-  }, 3625);
+  }, endLineTiming);
 };
 
 spinnerOne();
